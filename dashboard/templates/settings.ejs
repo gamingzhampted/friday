@@ -1,0 +1,26 @@
+<%- include("partials/header", { bot, user, path, title: `Settings | ${guild.name}` }) %>
+
+<div class="container-lg" style="margin-top: 30px; width: 100%;">
+  <div class="d-grid gap-2 col-4 mx-auto">
+    <% if (alert) { %>
+      <div class="alert alert-success" role="alert">
+        <%= alert %>
+      </div>
+    <% } %>
+    <h1><%= guild.name %></h1>
+    <hr>
+    <form umethod="POST">
+    <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;">Bot Nick:</p>
+      <p style="font-style: italic;" class="disabled">You can change bot name for your guild!</p>
+      <input type="text" class="form-control" name="name" value="<%= bot.guilds.cache.get(guild.id).members.cache.get("766256361344204800").nickname %>" placeholder="Your Nick.">
+    <br>
+    
+    <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;">Prefix:</p>
+      <p style="font-style: italic;" class="disabled">The prefix that is added to discord messages in order to invoke commands.</p>
+      <input type="text" class="form-control" name="prefix" value="<%= settings.prefix %>" placeholder="Your prefix.">
+      <br><button type="submit" class="btn btn-secondary text-white">Save Settings</button>
+    </form>
+  </div>
+</div>
+
+<%- include("partials/footer") %>
